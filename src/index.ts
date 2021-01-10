@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 import readFile from './readFile';
 import { MatchResult, MatchData } from './types';
 
