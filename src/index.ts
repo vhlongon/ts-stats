@@ -12,13 +12,16 @@ enum MatchResult {
   Draw = 'D',
 }
 
-const winsForManUnited = matches.reduce((acc, val) => {
-  const [, homeTeam, awayTeam, , , winner] = val;
-  const winnerHome =
-    homeTeam === 'Man United' && winner === MatchResult.HomeWin;
-  const winnerAway =
-    awayTeam === 'Man United' && winner === MatchResult.AwayWin;
-  return winnerHome || winnerAway ? acc + 1 : acc;
-}, 0);
+const winsForManUnited = matches.reduce(
+  (acc: number, val: string[]): number => {
+    const [, homeTeam, awayTeam, , , winner] = val;
+    const winnerHome =
+      homeTeam === 'Man United' && winner === MatchResult.HomeWin;
+    const winnerAway =
+      awayTeam === 'Man United' && winner === MatchResult.AwayWin;
+    return winnerHome || winnerAway ? acc + 1 : acc;
+  },
+  0
+);
 
 console.log(`Man United won ${winsForManUnited} games`);
