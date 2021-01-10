@@ -1,22 +1,11 @@
 import { readFileSync } from 'fs';
-
-const readFile = (fileName: string): string[][] =>
-  readFileSync(fileName, { encoding: 'utf-8' })
-    .split('\n')
-    .map((row: string): string[] => row.split(','));
+import readFile from './readFile';
+import { MatchResult, MatchData } from './types';
 
 const matches = readFile('football.csv');
 
-// enum - enumaration - used for closely related values
-// when we have a small fixed set of values known at compile time
-enum MatchResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
-
-const winsForTeam = (teamName: string, data: string[][]): number =>
-  data.reduce((acc: number, val: string[]): number => {
+const winsForTeam = (teamName: string, data: MatchData[]): number =>
+  data.reduce((acc: number, val: MatchData): number => {
     const [, homeTeam, awayTeam, , , winner] = val;
     const winnerHome = homeTeam === teamName && winner === MatchResult.HomeWin;
     const winnerAway = awayTeam === teamName && winner === MatchResult.AwayWin;
