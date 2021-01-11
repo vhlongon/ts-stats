@@ -1,6 +1,6 @@
 // enum - enumaration - used for closely related values
 // when we have a small fixed set of values known at compile time
-export enum MatchResult {
+export enum MatchResultType {
   HomeWin = 'H',
   AwayWin = 'A',
   Draw = 'D',
@@ -8,12 +8,14 @@ export enum MatchResult {
 
 // here we use a tuple to annotate the structure of a row in the data set
 // the corresponds to the information of a specific match
-export type MatchData = [
+export type MatchDataType = [
   Date,
   string,
   string,
   number,
   number,
-  MatchResult,
+  MatchResultType,
   string
 ];
+
+export type DataType = string[][];
