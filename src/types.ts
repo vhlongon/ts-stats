@@ -23,3 +23,5 @@ export type DataType = string[][];
 export type AnalyserType = (teamName: string, data: MatchDataType[]) => string;
 
 export type OutputTargetType = (report: string) => void;
+
+export type AnalyserReducerType = (acc: number, val: MatchDataType) => number;
