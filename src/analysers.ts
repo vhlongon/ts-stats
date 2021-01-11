@@ -38,10 +38,10 @@ export const getDrawsForTeam: AnalyserType = (
 ): string => {
   const draws = data.reduce((acc: number, val: MatchDataType): number => {
     const [, homeTeam, awayTeam, , , winner] = val;
-    const draw =
-      homeTeam === teamName || awayTeam === teamName && winner === MatchResultType.Draw;
-    
-    return draw ? acc + 1 : acc;
+    const drawHome = homeTeam === teamName && winner === MatchResultType.Draw;
+    const drawAway = awayTeam === teamName && winner === MatchResultType.Draw;
+
+    return drawHome || drawAway ? acc + 1 : acc;
   }, 0);
 
   return `${teamName} had ${draws} draw games`;
